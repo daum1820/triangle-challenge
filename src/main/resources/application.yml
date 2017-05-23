@@ -1,0 +1,8 @@
+zuul:
+  routes:
+    triangle:
+      path: /triangle/**
+      url: http://localhost:8080/tradeshift/api/triangle
+    health:
+      path: /health/**
+      url: http://localhost:8080/tradeshift/api/health
