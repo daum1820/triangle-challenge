@@ -32,10 +32,6 @@ public class SecurityContext extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .headers().xssProtection()
                 .and()
-                .frameOptions().sameOrigin()
-                .and()
-                .anonymous().disable()
-                .authorizeRequests()
-                .antMatchers("/api/**","/health/**").authenticated();
+                .frameOptions().sameOrigin();
     }
 }
