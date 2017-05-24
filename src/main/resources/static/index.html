@@ -7,18 +7,22 @@
     <title>Triangle Challenge - Tradeshift</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-    <h2>Tradeshift</h2>
+    <h2 class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
+        Triangle Challenge <small>by Tradeshift</small>
+    </h2>
     <div ng-view></div>
-
-    <script src="/webjars/angularjs/1.4.9/angular.js"></script>
-    <script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
-    <script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
-    <script src="/app/app.js"></script>
-    <script src="/app/controllers/triangle.controller.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/components/tradeshift.components.js"></script>
+    <script src="app/services/triangle.service.js"></script>
+    <script src="app/controllers/triangle.controller.js"></script>
 
 </body>
 </html>

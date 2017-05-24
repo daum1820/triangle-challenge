@@ -1,5 +1,6 @@
 package com.tradeshift.challenge.controllers;
 
+import com.tradeshift.challenge.models.Response;
 import com.tradeshift.challenge.models.Triangle;
 import com.tradeshift.challenge.services.TriangleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +22,18 @@ public class TriangleController {
         this.triangleService = triangleService;
     }
 
-    @RequestMapping(value = "/triangle", method = RequestMethod.POST)
-    public ResponseEntity<String> getTriangleType(@RequestBody(required = false) Triangle triangle) {
+    @RequestMapping(value = "/triangle", method = RequestMethod.POST, produces = "application/json")
+    public ResponseEntity<Response> getTriangleType(@RequestBody(required = false) Triangle triangle) {
         ResponseEntity responseEntity;
+        Response response = new Response();
 
         try{
             Triangle.TriangleType polygonType = triangleService.getPolygonType(triangle);
-            responseEntity = new ResponseEntity<>(polygonType.name(), HttpStatus.OK);
+            response.setMessage("This triangle is : " + polygonType.name());
+            responseEntity = new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e){
-            responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            response.setMessage(e.getMessage());
+            responseEntity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         return responseEntity;

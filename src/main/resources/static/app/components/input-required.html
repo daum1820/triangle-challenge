@@ -1,10 +1,5 @@
-<span>
-    <div ng-repeat="notification in $ctrl.notifications track by $index">
-        <div class="alert alert-dismissible {{'alert-'+ notification.type}}" role="alert">
-            <button class="close" data-ng-click="close($index)">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            {{notification.message}}
-        </div>
-    </div>
-</span>
+<div class="form-group" ng-class="{'has-error' : $ctrl.form.$error && $ctrl.form.$submitted }">
+    <label ng-bind="$ctrl.label"></label>
+    <input type="text" name="input" class="form-control" ng-model="$ctrl.model" required="true">
+    <span class="help-block" ng-if="!$ctrl.model && $ctrl.form.$submitted">This field is required</span>
+</div>

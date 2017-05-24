@@ -1,16 +1,16 @@
-(function() {
-    'use strict';
+angular.module('tradeshift', [
+    'ngRoute',
+    'tradeshift.components',
+    'tradeshift.services',
+    'tradeshift.controllers'
+])
 
-    var app = angular.module('tradeshift', ['ngRoute', 'ngResource']);
-
-    app.config(function($routeProvider) {
-        $routeProvider
-            .when('/triangle', {
-                templateUrl: '/views/triangle.html',
-                controller : 'triangleController'
-            })
-            .otherwise(
-                { redirectTo: '/triangle' }
-            );
-    });
-})
+.config(function($routeProvider) {
+    $routeProvider
+        .when('/triangle', {
+            templateUrl: 'app/views/triangle.html'
+        })
+        .otherwise(
+            { redirectTo: '/triangle' }
+        );
+});

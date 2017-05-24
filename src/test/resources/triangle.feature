@@ -34,16 +34,16 @@ Feature: Triangle Suite
     Given an triangle 10,10,10
     When we try to check the triangle at http://localhost:8080/tradeshift/triangle
     Then the check status is 200
-    And the check body must contain EQUILATERAL
+    And the check body must contain This triangle is : EQUILATERAL
 
   Scenario: Triangle ISOSCELES
     Given an triangle 10,10,7
     When we try to check the triangle at http://localhost:8080/tradeshift/triangle
     Then the check status is 200
-    And the check body must contain ISOSCELES
+    And the check body must contain This triangle is : ISOSCELES
 
   Scenario: Triangle SCALENE
     Given an triangle 10,7,5
     When we try to check the triangle at http://localhost:8080/tradeshift/triangle
     Then the check status is 200
-    And the check body must contain SCALENE
+    And the check body must contain This triangle is : SCALENE

@@ -1,6 +1,7 @@
 package com.tradeshift.challenge;
 
 import com.tradeshift.challenge.models.PolygonSide;
+import com.tradeshift.challenge.models.Response;
 import com.tradeshift.challenge.models.Triangle;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -21,7 +22,7 @@ public class TrianguleChallengeSuite {
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private ResponseEntity<String> response;
+    private ResponseEntity<Response> response;
     private Triangle triangle;
 
     @Given("^an invalid Triangle$")
@@ -48,7 +49,7 @@ public class TrianguleChallengeSuite {
 
     @When("^we try to check the triangle at (.*)$")
     public void whenCallTraingleCheck(String url) {
-        this.response = this.restTemplate.postForEntity(url, this.triangle, String.class, new HashMap<>());
+        this.response = this.restTemplate.postForEntity(url, this.triangle, Response.class, new HashMap<>());
     }
 
     @Then("^the check status is (\\d+)$")
@@ -58,6 +59,6 @@ public class TrianguleChallengeSuite {
 
     @And("^the check body must contain (.+)$")
     public void theResponseBodyMustContainFieldWithValue(String value) throws Throwable {
-        Assert.assertEquals(value, response.getBody());
+        Assert.assertEquals(value, response.getBody().getMessage());
     }
 }

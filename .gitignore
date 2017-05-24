@@ -4,5 +4,4 @@ target/
 *.iws
 *.iml
 *.ipr
-*bower_components*
 *yarn.lock*
