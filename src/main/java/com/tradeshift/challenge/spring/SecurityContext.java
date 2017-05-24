@@ -24,7 +24,8 @@ public class SecurityContext extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .antMatchers("/api/**")
-                .antMatchers("/health/**");
+                .antMatchers("/health/**")
+                .antMatchers("/resources/**");
     }
 
     @Override
@@ -32,6 +33,10 @@ public class SecurityContext extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .headers().xssProtection()
                 .and()
-                .frameOptions().sameOrigin();
+                .frameOptions().sameOrigin()
+                .and()
+                .anonymous().disable()
+                .authorizeRequests()
+                .antMatchers("/api/**","/health/**").authenticated();
     }
 }
