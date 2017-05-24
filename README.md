@@ -1,44 +1,44 @@
 ### Triangle Challenge 
 ###### by Tradeshift
 
-####**Environment**
+#### Environment
 * Java 8
 * Maven
 * Redis
 
-####**IDE**
+#### IDE
 * IntelliJ
 
-####**Server Side**
+#### Server Side
 * Spring Boot
 * Spring Boot MVC
 * Spring Boot Security
 * Spring Boot Zuul
 * Spring Boot Redis
 
-####**Client Side**
+#### Client Side
 * Bootstrap 3.3.7
 * AngularJS 1.6.4
 * Bower Package Manager
 
-####**Tests**
+#### Tests
 * JUnit
 * Cucumber
 
-####**Commands**
-######Clean
+#### Commands
+###### Clean
 ```shell
 $ mvn clean
 ```
-######Clean
+###### Clean
 ```Test
 $ mvn test
 ```
-######Build
+###### Build
 ```shell
 $ mvn package
 ```
-######Run
+###### Run
 ```shell
 $ mvn spring-boot:run
 ```
