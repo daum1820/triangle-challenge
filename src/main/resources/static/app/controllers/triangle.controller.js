@@ -5,25 +5,34 @@
     .controller('TriangleController', ['triangleService', '$timeout',
                                        function(triangleService, $timeout) {
         var vm = this;
+
+        //Controller initial state
         vm.state = {
             notifications : [],
             sideOne: null,
             sideTwo: null,
             sideThree: null,
+            timeout: null
         };
 
         vm.submit = function(form){
             form.$submitted = true;
-
             if(form.$valid){
+
+                //Check if exists some notification
+                if(vm.state.timeout){
+                    $timeout.cancel(vm.state.timeout);
+                    clearNotification(0);
+                }
+                //Build triangle object to check.
                 var triangle = triangleService.build(vm.state.sideOne,vm.state.sideTwo, vm.state.sideThree);
                 triangleService.checkTriangle(triangle).then((response) => {
                     notify(response, 'success');
-                    clearNotification(5000);
+                    vm.state.timeout = clearNotification(5000);
                     form.$submitted = false;
                 }, (err) => {
                     notify(err, 'danger');
-                    clearNotification(5000);
+                    vm.state.timeout = clearNotification(5000);
                     form.$submitted = false;
                 });
             }
@@ -36,6 +45,7 @@
                 sideOne: null,
                 sideTwo: null,
                 sideThree: null,
+                timeout: null,
             };
         };
 
@@ -44,8 +54,9 @@
         }
 
         function clearNotification(timeout){
-            $timeout(function(){
+            return $timeout(function(){
                 vm.state.notifications = [];
+                vm.state.timeout = null;
             }, timeout)
         }
     }]);
